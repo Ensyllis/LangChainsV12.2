@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>Guide - Theology AI</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../static/assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="../static/assets/css/noscript.css" /></noscript>
+        <style>
+            .container {
+                display: flex;
+                justify-content: space-between;
+                height: calc(100vh - 50px); /* Adjust 50px to the height of your parent element */
+                padding: 10px;
+            }
+            .box {
+                flex: 1; /* Each box takes up equal space */
+                background-color: #4B5D6B; /* Navy blue gray */
+                border-radius: 10px;
+                margin: 0 10px; /* Spacing between boxes */
+                padding: 20px;
+                box-sizing: border-box; /* Include padding in the box's total width */
+            }
+            .box:first-child {
+                margin-left: 0;
+            }
+            .box:last-child {
+                margin-right: 0;
+            }
+            .box h2{
+                text-align: center;
+            }
+            .box h3{
+                text-decoration: underline;
+            }
+            /* Ensure the container has enough space to display the collapsible content */
+            #documentsContainer {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr); /* Create 5 equal-width columns */
+                grid-template-rows: repeat(5, auto); /* Create 5 rows, height adjusts to content */
+                gap: 10px;
+                overflow: auto; /* Allows scrolling if the content exceeds the container's height */
+                max-height: 300px; /* Adjust based on your layout */
+            }
+
+            .collapse {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .collapse.show {
+                max-height: 200px; /* Adjust based on the content size */
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+            <header id="header" class="alt">
+                <h1><a href="index.html">Theology AI</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li class="special">
+                            <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                            <div id="menu">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/generic">Generic</a></li>
+                                    <li><a href="/elements">Elements</a></li>
+                                    <li><a href="/signup">Sign Up</a></li>
+                                    <li><a href="/login">Log In</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div>
+                <form id="signup-form" method="post" action="/soteriology_query">
+                    <input type="text" name="prompt" id="prompt" placeholder="Enter your question here" />
+                    <div></div>
+                    <br/>
+                    <input type="submit" value="Submit" />
+                </form>
+                <div id="documentsContainer"></div>
+            </div>
+            <div class="container">
+                <div class="box">
+                    <div class = "box">
+                        <h2>Week 1-2</h2>
+                    </div>
+                    <h3><strong>Election</strong></h3>
+                    <p>Objectives</p>
+                    <ul>
+                        <li>Understand the biblical concept of election</li>
+                        <li>Explore different interpretations and perspectives on election</li>
+                        <li>Apply the concept of election in personal lives and in the context of the church</li>
+                    </ul>
+                    <h3><strong>Calling</strong></h3>
+                    <h3><strong>Regeneration</strong></h3>
+                    <h3><strong>Conversion</strong></h3>
+                </div>
+                <div class="box">
+                    <div class = "box">
+                        <h2>Week 2-3</h2>
+                    </div>
+                    <h3><strong>Justification</strong></h3>
+                    <h3><strong>Adoption</strong></h3>
+                    <h3><strong>Union with Christ</strong></h3>
+                    <h3><strong>Sanctification</strong></h3>
+                </div>
+                <div class="box">
+                    <div class = "box">
+                        <h2>Week 3-4</h2>
+                    </div>
+                    <h3><strong>Perseverance</strong></h3>
+                    <h3><strong>Death</strong></h3>
+                    <h3><strong>Glorification</strong></h3>
+                </div>
+            </div>
+       
+       
+            <script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/browser.min.js"></script>
+			<script src="../static/assets/js/breakpoints.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<script src="../static/assets/js/main.js"></script>
+        </body>
+
+
+</html>
+

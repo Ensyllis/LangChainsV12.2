@@ -2425,7 +2425,6 @@ input, select, textarea {
 		letter-spacing: 0.225em;
 		line-height: 3.125em;
 		max-width: 30em;
-		margin-top: 2em;
 		padding: 0 2.75em;
 		text-align: center;
 		text-decoration: none;
@@ -3773,7 +3772,9 @@ input, select, textarea {
   #signup-form .message {
 	font-size: 0.9em;
 	line-height: inherit;
-	margin-top: 0;
+	margin-top: 1em;
+	width: 80%;
+	margin: 0 auto;
   }
   @media screen and (max-width: 480px) {
     #signup-form {
@@ -3788,9 +3789,10 @@ input, select, textarea {
       #signup-form > * {
         margin: 1.25em 0 0 0; }
       #signup-form .message {
-        font-size: 0.9em;
+		font-size: 0.9em;
         line-height: inherit;
-        margin-top: 1em; } }
+        margin-top: 1em;
+		box-sizing: border-box;  } }
  @media screen and (max-width: 768px) {
 			#signup-form input[type="text"],
 			#signup-form input[type="password"],
@@ -3799,7 +3801,7 @@ input, select, textarea {
 			#signup-form .message {
 				font-size: 0.9em;
 				line-height: inherit;
-				margin-top: 0em;
+				margin-top: 1em;
   		  	}
 	}
  @media screen and (max-width: 100vh) {
@@ -3810,7 +3812,7 @@ input, select, textarea {
 		#signup-form .message {
 			font-size: 0.9em;
 			line-height: inherit;
-			margin-top: 0em;
+			margin-top: 1em;
 			}
 	}
   /* Small screens (e.g., mobile phones) */

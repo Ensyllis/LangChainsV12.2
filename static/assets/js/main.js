@@ -127,7 +127,7 @@
             var promptValue = document.getElementById('prompt').value;
 
             // Send the prompt value to the /query endpoint using fetch
-            fetch('/query', {
+            fetch('/soteriology_query', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -143,12 +143,42 @@
                 $form.reset();
 
                 // Show result and source documents.
-        		if (data.error) {
-        		    $message._show('failure', 'Error: ' + data.error);
-        		} else {
-        		    let messageContent = 'Result: ' + data.result;
-        		    $message._show('success', messageContent);
-        		}
+				if (data.error) {
+				    $message._show('failure', 'Error: ' + data.error);
+				} else {
+				    let messageContent = 'Result: ' + data.result;
+				    $message._show('success', messageContent);
+				
+				    const documentsContainer = document.getElementById('documentsContainer');
+				    documentsContainer.innerHTML = ''; // Clear previous content
+				
+				    if (data.source_documents && data.source_documents.length > 0) {
+				        data.source_documents.forEach((doc, index) => {
+				            // Create button
+				            const button = document.createElement('button');
+				            button.textContent = `Source ${index + 1}`;
+				            button.id = `toggleButton${index}`;
+						
+				            // Create collapsible container
+				            const collapseContainer = document.createElement('div');
+				            collapseContainer.id = `documentContainer${index}`;
+				            collapseContainer.classList.add('collapse');
+						
+				            // Set the content of the collapsible container
+				            collapseContainer.innerHTML = doc;
+						
+				            // Append button and collapsible container to the documentsContainer
+				            documentsContainer.appendChild(button);
+				            documentsContainer.appendChild(collapseContainer);
+						
+				            // Add event listener to the button to toggle the visibility of the container
+				            button.addEventListener('click', function() {
+				                collapseContainer.classList.toggle('show');
+				            });
+				        });
+				    }
+				}
+
         	})
             .catch(error => {
                 // Enable submit.
@@ -159,3 +189,4 @@
             });
         });
 	})();
+
