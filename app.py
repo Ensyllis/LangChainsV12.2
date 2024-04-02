@@ -8,7 +8,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from flask_cors import CORS
 from flask_login import login_required, current_user
-from . import create_app
+from __init__ import create_app
 
 load_dotenv()
 
@@ -219,4 +219,4 @@ if __name__ == '__main__':
     db.create_all(app=create_app()) # create the SQLite database
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(debug=True) # run the flask app on debug mode
+    app.run() # run the flask app on debug mode
