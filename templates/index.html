@@ -11,6 +11,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../static/assets/css/noscript.css" /></noscript>
+		<style>
+			/* Ensure the container has enough space to display the collapsible content */
+            #documentsContainer {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr); /* Create 5 equal-width columns */
+                grid-template-rows: repeat(5, auto); /* Create 5 rows, height adjusts to content */
+                gap: 10px;
+                overflow: auto; /* Allows scrolling if the content exceeds the container's height */
+                max-height: 300px; /* Adjust based on your layout */
+            }
+
+            .collapse {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .collapse.show {
+                max-height: 200px; /* Adjust based on the content size */
+            }
+		</style>
 	</head>
 	<body class="landing is-preload">
 
@@ -51,6 +72,7 @@
 							<br/>
 							<input type="submit" value="Submit" />
 						</form>
+						<div id="documentsContainer"></div>
 						<a href="#one" class="more scrolly">Learn More</a>
 					</section>
 

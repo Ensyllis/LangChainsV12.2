@@ -98,6 +98,8 @@ def soteriology_query(question):
     )
 
     prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+    The context are from slides and notes on the topic of Soteriology. They are from Professor Leon Harris of Biola. If the answer isn't supported by the context, just say you don't know, don't try to make up an answer.
+    Refer to the context as 'slides'. 
 
     {context}
 
@@ -120,14 +122,29 @@ def soteriology_query(question):
         try:
             # Retrieve documents and answer
             docs = qa({"query": question})
+        
+            def process_docs(docs):
+                result = docs.get("result")
+                text = [doc.page_content for doc in docs.get("source_documents", [])]
+                sources = []
 
-            result = docs.get("result")
-            page_contents = [doc.page_content for doc in docs.get("source_documents", [])]
+                for doc in docs.get("source_documents", []):
+                    source = doc.metadata.get('source', '').split("\\")[-1][:-4]
+                    page = doc.metadata.get('page')
+                    sources.append({
+                        "text": doc.page_content,
+                        "source": source,
+                        "page": page
+                    })
+                
+                        
+                return {
+                    "result": result,
+                    "source_documents": sources
+                }
+            
+            return process_docs(docs)
 
-            return {
-                "result": result,
-                "source_documents": page_contents
-            }
         except Exception as e:
             return {"error": str(e)}
 
@@ -186,12 +203,17 @@ def login():
     return render_template('login.html')
 
 @app.route('/profile') # profile page that return 'profile'
+
 def profile():
     return render_template('profile.html')
 
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
+@app.route('/guide/election')
+def election():
+    return render_template('soteriology/election.html')
 
 if __name__ == '__main__':
     db.create_all(app=create_app()) # create the SQLite database

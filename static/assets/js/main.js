@@ -148,15 +148,20 @@
 				} else {
 				    let messageContent = 'Result: ' + data.result;
 				    $message._show('success', messageContent);
+
+					
 				
 				    const documentsContainer = document.getElementById('documentsContainer');
 				    documentsContainer.innerHTML = ''; // Clear previous content
 				
 				    if (data.source_documents && data.source_documents.length > 0) {
 				        data.source_documents.forEach((doc, index) => {
-				            // Create button
+
+							const label = `${doc.source} - Page ${doc.page}`;
+				            
+							// Create button
 				            const button = document.createElement('button');
-				            button.textContent = `Source ${index + 1}`;
+				            button.textContent = `${label}`;
 				            button.id = `toggleButton${index}`;
 						
 				            // Create collapsible container
@@ -165,7 +170,10 @@
 				            collapseContainer.classList.add('collapse');
 						
 				            // Set the content of the collapsible container
-				            collapseContainer.innerHTML = doc;
+				            collapseContainer.innerHTML = `
+								<p><strong>Source:</strong> ${label}</p>
+								<p><strong>Text:</strong> ${doc.text}</p>
+							`;
 						
 				            // Append button and collapsible container to the documentsContainer
 				            documentsContainer.appendChild(button);

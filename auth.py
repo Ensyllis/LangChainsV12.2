@@ -81,10 +81,11 @@ def elements():
 def generic():
     return render_template('generic.html')
 
+@auth.route('/guide/election')
+def election():
+    return render_template('soteriology/election.html')
 
 ####################################################################@
-@auth.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('main.index'))
+auth.route('/logout') # define logout path
+def logout(): #define the logout function
+    return 'logout'
